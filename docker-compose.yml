@@ -1,0 +1,57 @@
+version: "3.6"
+
+volumes:
+  postgres-data:
+  composer-data:
+
+services:
+  memcached:
+    image: memcached:alpine
+    expose:
+      - 11211
+
+  postgres:
+    image: postgres:10.3-alpine
+    environment:
+      POSTGRES_DB: project
+      POSTGRES_USER: project
+      POSTGRES_PASSWORD: project
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./docker/var/db-dumps/:/docker-entrypoint-initdb.d/
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+
+  php-fpm:
+    build:
+      context: docker/php-fpm
+      args:
+        DOCKER_HOST_UID: $DOCKER_HOST_UID
+        MEMCACHED_VERSION: $MEMCACHED_VERSION
+        COMPOSER_VERSION: $COMPOSER_VERSION
+    volumes:
+      - ./project:/var/www/project:cached
+      - composer-data:/home/www-data/.composer/
+      - type: bind
+        source: ./docker/var/php-config/xdebug.ini
+        target: /usr/local/etc/php/conf.d/xdebug.ini
+        read_only: true
+    expose:
+      - 9000
+    links:
+      - memcached
+      - postgres
+
+  nginx:
+    image: nginx:1.13.12-alpine
+    volumes:
+      - ./project:/var/www/project:cached
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/site.conf
+    ports:
+     - 80:80
+     - 443:443
+    links:
+      - php-fpm
