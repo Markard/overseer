@@ -41,8 +41,6 @@ services:
         read_only: true
     expose:
       - 9000
-    environment:
-      - APP_ENV=dev
     links:
       - memcached
       - postgres
