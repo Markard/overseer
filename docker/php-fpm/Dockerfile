@@ -69,6 +69,7 @@ RUN set -xe \
     && docker-php-source delete
 
 COPY php.ini /usr/local/etc/php/php.ini
-COPY fpm-increase-timeout-for-debugging.conf /usr/local/etc/php-fpm.d/increase-timeout-for-debugging.conf
+COPY php-fpm.conf /usr/local/etc/php-fpm.conf
+COPY pool.d/default.conf /usr/local/etc/pool.d/default.conf
 
 WORKDIR /var/www/project
