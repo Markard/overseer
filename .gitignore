@@ -1,5 +1,6 @@
 # Environment configuration
 .env
+http_requests/http-client.env.json
 
 # Var files
 docker/var/php-config/xdebug.ini

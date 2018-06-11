@@ -1,0 +1,42 @@
+### Get all daily logs
+
+GET http://{{url}}/api/time-tracker/v1/daily-log
+Content-Type: application/json
+Accept: application/json
+
+### Get a daily log
+
+GET http://{{url}}/api/time-tracker/v1/daily-log/1
+Content-Type: application/json
+Accept: application/json
+
+### Create daily log
+
+POST http://{{url}}/api/time-tracker/v1/daily-log
+Content-Type: application/json
+Accept: application/json
+
+{
+    "description": "Посетил встречу с командой маркетинга.",
+    "startDate": "2018-05-06T10:00:00+02:00"
+}
+
+### Edit daily log
+
+PUT http://{{url}}/api/time-tracker/v1/daily-log/1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "description": "New description.",
+    "startDate": "2018-05-07T10:00:00+02:00",
+    "endDate": "2018-05-07T11:00:00+02:00"
+}
+
+### Delete daily log
+
+DELETE http://{{url}}/api/time-tracker/v1/daily-log/3
+Content-Type: application/json
+Accept: application/json
+
+###
