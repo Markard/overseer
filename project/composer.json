@@ -13,8 +13,8 @@
         "symfony/framework-bundle": "^4.0",
         "symfony/lts": "^4@dev",
         "symfony/monolog-bundle": "^3.2",
-        "symfony/options-resolver": "^4.0",
         "symfony/orm-pack": "^1.0",
+        "symfony/twig-bundle": "^4.0",
         "symfony/validator": "^4.0",
         "symfony/yaml": "^4.0"
     },
