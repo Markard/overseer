@@ -1,0 +1,18 @@
+services:
+
+    App\TimeTracker\Storage:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
+    App\TimeTracker\Application\CrudController:
+        arguments:
+            - '@App\TimeTracker\Storage'
+        tags: ['controller.service_arguments']
+
+    App\TimeTracker\Application\Input\RequestConverter:
+        arguments:
+            - '@validator'
+        tags:
+            -
+                name: 'request.param_converter'
+                converter: 'App\TimeTracker\Application\Input\RequestConverter'

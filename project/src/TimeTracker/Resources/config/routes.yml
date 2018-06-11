@@ -1,0 +1,35 @@
+timetracker.v1.list.daily_log:
+  path: '/time-tracker/v1/daily-log'
+  methods:
+    - 'GET'
+  defaults: {_controller: 'App\TimeTracker\Application\CrudController:listDailyLogs'}
+
+timetracker.v1.show.daily_log:
+  path: '/time-tracker/v1/daily-log/{id}'
+  requirements:
+    id: '\d+'
+  methods:
+    - 'GET'
+  defaults: {_controller: 'App\TimeTracker\Application\CrudController:showDailyLog'}
+
+timetracker.v1.create.daily_log:
+  path: '/time-tracker/v1/daily-log'
+  methods:
+    - 'POST'
+  defaults: {_controller: 'App\TimeTracker\Application\CrudController:createDailyLog'}
+
+timetracker.v1.edit.daily_log:
+  path: '/time-tracker/v1/daily-log/{id}'
+  requirements:
+      id: '\d+'
+  methods:
+    - 'PUT'
+  defaults: {_controller: 'App\TimeTracker\Application\CrudController:editDailyLog'}
+
+timetracker.v1.delete.daily_log:
+  path: '/time-tracker/v1/daily-log/{id}'
+  requirements:
+      id: '\d+'
+  methods:
+    - 'DELETE'
+  defaults: {_controller: 'App\TimeTracker\Application\CrudController:deleteDailyLog'}
