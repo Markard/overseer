@@ -1,3 +1,14 @@
 time_tracker:
     prefix: 'api/'
     resource: 'TimeTracker/Resources/config/routes.yml'
+
+api_documentation.swagger_ui:
+    path: /api/doc
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
+
+api_documentation.swagger:
+    path: /api/doc.json
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger }
+
