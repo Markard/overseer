@@ -41,6 +41,8 @@ services:
         read_only: true
     expose:
       - 9000
+    environment:
+      - PHP_IDE_CONFIG=serverName=Web Application
     links:
       - memcached
       - postgres
